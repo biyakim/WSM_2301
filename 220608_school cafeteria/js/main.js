@@ -1,15 +1,15 @@
 // show/hide menu: toggle menu
-function toggleMenu(toggleId, navListId){
+const  toggleMenu = (toggleId, navListId) =>  {
     //html -> js
     const toggle = document.getElementById(toggleId);
     const navList = document.getElementById(navListId);
     
-    function clickHandler(){
+    const clickHandler = () => {
         //show/hide menu: .show-menu
         navList.classList.toggle('show-menu');
     }
    
-    if(toggle && navList){
+    if(toggle && navList) {
          //toggle click]
         toggle.addEventListener('click',clickHandler);
          //show/hide menu: .show-menu
