@@ -1,0 +1,34 @@
+// show/hide menu: toggle menu
+function toggleMenu(toggleId, navListId){
+    //html -> js
+    const toggle = document.getElementById(toggleId);
+    const navList = document.getElementById(navListId);
+    
+    function clickHandler(){
+        //show/hide menu: .show-menu
+        navList.classList.toggle('show-menu');
+    }
+   
+    if(toggle && navList){
+         //toggle click]
+        toggle.addEventListener('click',clickHandler);
+         //show/hide menu: .show-menu
+    }
+    
+}
+toggleMenu('nav-toggle','nav-list');
+
+// const say = () => console.log("hello world4");
+
+// const say = () => {
+//     console.log("hello world3");
+// }
+
+// const say = function () {
+//     console.log("hello world");
+// }
+
+// function say(){
+//     console.log("hello world");
+// }
+// say();
