@@ -34,3 +34,36 @@ toggleMenu('nav-toggle','nav-list');
 //     console.log("hello world");
 // }
 // say();
+
+const addNow =(mainCardId) => {
+    //html -> js
+    const mainCard = document.getElementById(mainCardId);
+
+    //지금 몇시?
+    //다음 식사 -> 몇번째 카드인지
+    let now = new Date();
+    let hour = now.getHours();
+    let minute = now.getMinutes();
+    console.log(`${hour}시 ${minute}분`);
+    //지금 시각 -> index
+    //조식 끝: 7:30 -> 1
+    hour = 14;
+    minute = 40;
+    if(hour<7&&minute<30){
+        index=1;
+    }else if(hour<13&&minute<10){
+        index=2;
+    }else if(hour<18&&minute<10){
+        index=0;
+    }
+        
+    console.log(index);
+    //중식 끝: 13:10 ->2
+    //석식 끝: 18:10 ->0
+    // index =2;
+    let selectedCard = mainCard.getElementsByClassName('card')[index];
+    //.now 클래스 추가
+    selectedCard.classList.add('now');
+}
+
+addNow('main-card');
