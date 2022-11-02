@@ -76,7 +76,7 @@ const showTodayMenu = () =>{
     url += `&ATPT_OFCDC_SC_CODE=${ATPT_OFCDC_SC_CODE}`;
     url += `&SD_SCHUL_CODE=${SD_SCHUL_CODE}`;
     url += `&MLSV_YMD=${MLSV_YMD}`;
-    //console.log(url);
+    console.log(url);
     //비동기로 호출하자
     //응답오면 표시하자
     fetch(url).then((response) => response.json()).then((json) => console.log(json));
