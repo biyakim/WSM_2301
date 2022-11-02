@@ -56,6 +56,43 @@ const addNow = (mainCardId) => {
 }
 addNow('main-card');
 
+const showMenu = (json) => {
+  console.log(jsonString);
+  //jsonString -> json
+  let json = JSON.parse(jsonString); //JSON.stringfy(): json -> String
+  console.log(json);
+  //json -> 조식, 중식, 석식
+  let breakfastMenu = "없음";
+  let lunchMenu = "없음";
+  let dinnerMenu ="없음";
+  try{
+      breakfastMenu = json["mealServiceDietInfo"][1]["row"][0]["DDISH_NM"];
+      //(5.13) 삭제
+      //(열고, 숫자, 점 여러개)닫고
+      breakfastMenu = breakfastMenu.replace(/\([0123456789\.]+\)/g, "");
+  }catch{
+  }
+  try{
+      lunchMenu = json["mealServiceDietInfo"][1]["row"][1]["DDISH_NM"];
+      lunchMenu=lunchMenu.replace(/\([0-9\.]+\)/g,"");
+  }catch{ 
+  }    
+  try {
+      dinnerMenu = json["mealServiceDietInfo"][1]["row"][2]["DDISH_NM"];
+      dinnerMenu=dinnerMenu.replace(/\([\d\.]+\)/g,"");
+  }catch{
+  }
+  
+  //조식, 중식, 석식 -> HTML
+  let menu = document.querySelectorAll(".card-menu");
+  let breakfast = menus[0];
+  let lunch = menus[1];
+  let dinner = menus[2];
+  breakfast.innerHTML = breakfastMenu;
+  lunch.innerHTML = lunchMenu;
+  dinner.innerHTML = dinnerMenu;
+}
+
 //오늘의 급식 메뉴 표시하자
 const showTodayMenu = () =>{
     //년, 월, 일 구하고
@@ -79,6 +116,8 @@ const showTodayMenu = () =>{
     console.log(url);
     //비동기로 호출하자
     //응답오면 표시하자
-    fetch(url).then((response) => response.json()).then((json) => console.log(json));
+    fetch(url)                            //비동기 호출
+    .then((response) => response.json())  //응답데이터 ->json
+    .then((json) => showMenu(json));  //json ->HTML
 }
 showTodayMenu();
